@@ -1,0 +1,52 @@
+class Node:
+    def __init__(self,val):
+        self.data=val
+        self.next=None
+
+class LinkedList:
+    def __init__(self):
+        self.head=None
+
+    def append(self,newnode):
+        
+        if self.head==None:
+            self.head=newnode
+        else:
+            temp=self.head
+            while temp.next!=None:
+                temp=temp.next
+            temp.next=newnode      
+
+    def see(self):
+        temp=self.head
+        while temp:
+            print(temp.data)
+            temp=temp.next
+
+    def insert(self,newnode):
+        pos=int(input("enter position"))
+        if pos==1:
+            newnode.next=self.head
+            self.head=newnode
+        else:
+            p=1
+            temp=self.head
+            while (p!=pos-1 and temp.next!=None):
+                temp=temp.next
+                p+=1
+            newnode.next=temp.next
+            temp.next=newnode
+
+
+n1=Node(30)
+n2=Node(40)
+n3=Node(50)
+
+list=LinkedList()
+list.append(n1)
+list.append(n2)
+list.append(n3)
+list.see()
+n4=Node(60)
+list.insert(n4)
+list.see()
