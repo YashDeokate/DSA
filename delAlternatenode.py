@@ -56,17 +56,15 @@ class MyLinkedList:
         return items
     
     def AlternateNode(self):
-        if self.head is None or self.head.next is None:
-            return
 
         prev = self.head
-        curr = self.head.next
+        temp = self.head.next
 
-        while prev and curr:
-            prev.next = curr.next
+        while prev and temp:
+            prev.next = temp.next
             prev = prev.next
             if prev:
-                curr = prev.next
+                temp = prev.next
             else:
                 break
 # Main program
