@@ -45,11 +45,11 @@ class LinkedList:
             while p!=pos-1:
                 temp=temp.next
                 p+=1
-            temp.next=newnode
-            newnode.prev=temp
-            newnode.next=temp.next
-            if temp.next:
-                temp.next.prev=newnode
+            newnode.next = temp.next
+            newnode.prev = temp
+            temp.next = newnode
+            if newnode.next:
+                newnode.next.prev=newnode
 
 
 list=LinkedList()

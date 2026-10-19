@@ -18,6 +18,7 @@ class MyLinkedList:
         self.head = None
         last = None
 
+
         for value in values:
             new_node = ListNode(value)
 
