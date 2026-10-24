@@ -1,3 +1,5 @@
+# stack operations : push, pop, reverse
+
 class node: 
     def __init__(self,value):
         self.data=value
