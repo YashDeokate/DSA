@@ -1,46 +1,90 @@
-class node:
-    def __init__(self,value):
-        self.right= None
-        self.left= None
-        self.data= value
-        
-class bst:
+#BST using Linked List
+class Node:
+    def __init__(self, value):
+        self.left=None
+        self.data=value
+        self.right=None
+class BST:
     def __init__(self):
-        self.root = None
-
-            
-    def insert(self,newnode):        
-        if self.root  is None:
-            self.root= newnode       
+        self.root=None
+        self.cnt=0
+        self.leafcnt=0
+        self.nonleafcnt=0
+       
+    def insert(self, new_node):
+        if self.root is None: ##BST is empty
+            self.root=new_node
+        else:
+            temp=self.root
+            while True:
+                if new_node.data<temp.data: #left subtree
+                    if temp.left is None:
+                        temp.left=new_node
+                        return
+                    else:
+                        temp=temp.left
+                else: #right subree
+                    if temp.right is None:
+                        temp.right=new_node
+                        return
+                    else:
+                        temp=temp.right
+    def inorder(self, rt):
+        if rt is None:
             return
         else:
-            temp= self.root
-            while True:
-                if newnode.data < temp.data:
-                    if temp.left is None:
-                        temp.left= newnode
-                        return
-                    else:
-                        temp= temp.left
-                elif newnode.data > temp.data:
-                    if temp.right is None:
-                        temp.right= newnode
-                        return
-                    else:
-                        temp= temp.right
-
-def inorder(temp):
-    if temp is None:
-        return
-    else:
-        inorder(temp.left)
-        print(temp.data, end=" ")
-        inorder(temp.right)
+            self.inorder(rt.left)
+            print(rt.data, end=" ")
+            self.cnt+=1  # count number of nodes
+            if rt.left is None and rt.right is None: # count number of leaf nodes
+                self.leafcnt+=1
+            if rt.left is not None and rt.right is  not None: # count number of  non leaf nodes
+                self.nonleafcnt+=1    
+            self.inorder(rt.right)
             
-btree=bst()
-btree.insert(node(10))
-btree.insert(node(5))
-btree.insert(node(2))
-btree.insert(node(15))
-btree.insert(node(20))
-inorder(btree.root)
+            
+    def preorder(self, rt):
+        if rt is None:
+            return
+        else:
+            print(rt.data, end=" ")
+            self.preorder(rt.left)
+            self.preorder(rt.right)
+            
+    def postorder(self, rt):
+        if rt is None:
+            return
+        else:
+            self.postorder(rt.left)
+            self.postorder(rt.right)
+            print(rt.data, end=" ")
+            
+    def findminmax(self):
+        temp=self.root
+        while temp.left:
+            temp=temp.left
+        print("\nMin: ", temp.data)
+        temp=self.root
+        while temp.right:
+            temp=temp.right
+        print("\nMax: ", temp.data)
+
+    
+
+b1=BST()
+b1.insert(Node(100))
+b1.insert(Node(10))
+b1.insert(Node(450))
+b1.insert(Node(0))
+b1.insert(Node(65))
+b1.insert(Node(300))
+print("\nInorder: ")
+b1.inorder(b1.root)
+print("\nNo of nodes: ",b1.cnt)
+print("No of leaf nodes: ",b1.leafcnt)
+print("No of non leaf nodes: ",b1.nonleafcnt)
+print("\nPreorder: ")
+b1.preorder(b1.root)
+print("\nPostorder: ")
+b1.postorder(b1.root)
+b1.findminmax()
