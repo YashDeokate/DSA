@@ -7,9 +7,9 @@ class Node:
 class BST:
     def __init__(self):
         self.root=None
-        self.cnt=0
-        self.leafcnt=0
-        self.nonleafcnt=0
+        # self.cnt=0
+        # self.leafcnt=0
+        # self.nonleafcnt=0
        
     def insert(self, new_node):
         if self.root is None: ##BST is empty
@@ -35,11 +35,11 @@ class BST:
         else:
             self.inorder(rt.left)
             print(rt.data, end=" ")
-            self.cnt+=1  # count number of nodes
-            if rt.left is None and rt.right is None: # count number of leaf nodes
-                self.leafcnt+=1
-            if rt.left is not None and rt.right is  not None: # count number of  non leaf nodes
-                self.nonleafcnt+=1    
+            # self.cnt+=1  # count number of nodes
+            # if rt.left is None and rt.right is None: # count number of leaf nodes
+            #     self.leafcnt+=1
+            # if rt.left is not None and rt.right is  not None: # count number of  non leaf nodes
+            #     self.nonleafcnt+=1    
             self.inorder(rt.right)
             
             
@@ -80,9 +80,9 @@ b1.insert(Node(65))
 b1.insert(Node(300))
 print("\nInorder: ")
 b1.inorder(b1.root)
-print("\nNo of nodes: ",b1.cnt)
-print("No of leaf nodes: ",b1.leafcnt)
-print("No of non leaf nodes: ",b1.nonleafcnt)
+# print("\nNo of nodes: ",b1.cnt)
+# print("No of leaf nodes: ",b1.leafcnt)
+# print("No of non leaf nodes: ",b1.nonleafcnt)
 print("\nPreorder: ")
 b1.preorder(b1.root)
 print("\nPostorder: ")
