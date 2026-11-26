@@ -25,10 +25,10 @@ class BST:
                     if temp.right is None:
                         temp.right=new_node
                         return
-                    else:
+                    else:                          
                         temp=temp.right
                         
-   
+
                         
     def inorder(self, rt):
         if rt is None:
@@ -53,9 +53,6 @@ class BST:
                 arr.append(temp.left)
             if temp.right:
                 arr.append(temp.right)
-            
-
-    
 
 b1=BST()
 b1.insert(Node(100))
